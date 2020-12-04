@@ -1,0 +1,171 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+    font-size:0.85em;
+    color: #555;
+    margin: 0em 2em;
+    background-color: lightgray;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10000;
+  }
+#top {
+    position: fixed;
+    bottom: 20px;
+    right: -240px;
+}
+#top a {
+    position: relative;
+    display: block;
+}
+#top:hover{
+    filter: saturate(200%);
+}
+nav ul {
+    margin: 0em 0em 0em -2em;
+    font-family: 'Architects Daughter', cursive;
+    background-color: rgba(256, 256, 256, 0.5);
+    display: flex;
+}
+nav li, nav a { 
+    display: block;
+}
+nav a{
+    padding: 15px 15px 15px 30px;
+    text-decoration: none;
+    font-size: 1.4em;
+    color:black;
+    opacity: 0.8;
+}
+#div0{
+    background: lightgray;
+}
+h1 {
+    color: #8b8989;
+    text-align: center;
+    margin:-50px 0 50px;
+}
+#div1 {
+    background: white;
+    margin: 0px -27px 0px;
+    padding: 10px;
+}
+h2 {
+    text-align: center;
+    font-family: 'Architects Daughter', cursive;
+    font-size: 35px;
+    margin: 50px 0 -50px;
+}
+dl {
+    line-height: 2.5;
+    padding: 100px;
+}
+dt{
+    margin: 0;
+    color: #86c3e9;
+}
+dd{
+    margin: 0 40px;
+}
+#div3 {
+    background: white;
+    margin: 0px -27px 0px;
+    padding: 10px;
+}
+#div3a{
+    margin: 100px 0 100px;
+    text-align: center;
+}
+p{
+    margin: 5px;
+}
+input{
+    border: solid 1px #86c3e9;
+    border-radius: 4px;
+}
+#namae{
+    padding: 5px 10px;
+    margin: 10px;
+}
+#mail{
+    padding: 5px 40px;
+    margin: 10px;
+}
+textarea{
+    padding: 30px 40px;
+    border: solid 1px #86c3e9;
+    border-radius: 4px;
+}
+.button{
+    display: inline-block;
+    padding: 0.3em 1em;
+    margin: 40px 0 0;
+    text-decoration: none;
+    color: #86c3e9;
+    border: solid 2px #86c3e9;
+    border-radius: 3px;
+    transition: .4s;
+}
+.button:hover {
+    background: #86c3e9;
+    color: white;
+  }
+#foot{
+    text-align: center;
+    margin: 30px;
+}
+#twitter{
+    margin: 10px 10px 5px;
+}
+#insta{
+    margin: 10px 10px 10px;
+    opacity: 0.8;
+}
+/* #circle1 {
+    background: hsl(0, 0%, 80%);
+    height: 500px;
+    width: 500px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+} */
+
+/* works */
+#div2a{
+    margin: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+}
+#div2b{
+    margin: 10px;
+    padding: 10px;
+}
+
+/*send.html*/
+#send-mes{
+    text-align: center;
+    line-height: 3em;
+    margin-bottom: 50px;
+}
+.button2{
+    display: inline-block;
+    padding: 0.3em 1em;
+    margin: 40px 0 0;
+    text-decoration: none;
+    color: white;
+    border: solid 2px white;
+    border-radius: 3px;
+    transition: .4s;
+}
+.button2:hover {
+    background: white;
+    color: #86c3e9;
+}

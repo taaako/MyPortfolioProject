@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js">
+</script>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 24px;
+    background: #ffffff;
+}
+header {
+    background-color: #fd7777;
+    border-top: 2px solid #444;
+    color: #fff;
+    text-align: center;
+}
+main {
+    position:relative;
+}
+footer {
+    background-color: #fd7777;
+    border-bottom:1px solid #444;
+    text-align: center;
+    color: #fff;
+    margin-top: auto;
+}
+h1 {
+    margin: 0;
+}
+p {
+    font-size:100%;
+    text-align: center;
+    border-bottom:1px solid #fff;
+    height:100px;
+}
+div {
+    font-size:100%;
+    text-align: center;
+    border-bottom:1px solid #fff;
+    height:100px;
+}
+ul {
+    padding: 0;
+    border-top: 1px solid #000000;
+    display: table;  /* 定義 */
+    table-layout: fixed;
+    width: 100%;
+}
+li {
+    list-style-type:none;
+    border: 1px solid #666;
+    background-color: #fff;
+    display: table-cell;  /* 定義 */
+    cursor: pointer;
+}
+li:hover {
+    background: #0066CC;
+    color:#fff;
+}
+img{
+  margin-top: -60px;
+  margin-right: -200px;
+}
+/*引用開始*/
+button{
+  position: relative;
+  text-decoration: none;
+  height:120px;
+  width: 120px;
+  line-height: 120px;
+  text-align: center;
+  color: #fff;
+  background: #fd7777;
+  border: dashed 1px rgba(255, 255, 255, 1);
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px #fd7777;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+  margin-left : 10px;
+  margin-right : 10px;
+  top: 100px;
+}
+button:hover{
+  opacity: 0.5;
+  border: solid 1px #fd7777;
+}
+/*引用終了*/
+
+textarea{
+  margin: 3%;
+  width: 40%;
+  height: 50px;
+  font-size:145%;
+  box-shadow: 3px 3px 3px 3px #555;
+  text-align: center;
+  padding: 1em;
+}
+  
+select{
+  width: 200px;
+  height: 40px;
+  font-size: 100%;
+}
+
+/*引用開始*/
+.hyouka{
+ display: -ms-flex;
+ display: -webkit-flex;
+ display: -moz-flex;
+ display: -o-flex;
+ display: flex;
+ 
+ flex-direction: -ms-row-reverse;
+ flex-direction: -webkit-row-reverse;
+ flex-direction: -moz-row-reverse;
+ flex-direction: -o-row-reverse; 
+ flex-direction: row-reverse;
+  
+justify-content: -ms-right;
+justify-content: -webkit-right;
+justify-content: -moz-right;
+justify-content: -o-right;
+justify-content: right;
+}
+.hyouka input[type='radio']{
+  display: none;
+}
+.hyouka input[type='radio']{
+  display: none;
+}
+.hyouka label{
+  position: relative;
+  padding: 10px 0px 20px 0px;
+  color: #bbb;
+  cursor: pointer;
+  font-size: 100px;
+  right: 220px;
+  bottom: 50px;
+}
+ 
+.hyouka label:hover,
+.hyouka label:hover ~ label,
+.hyouka input[type='radio']:checked ~ label{
+  color: #faee2e;
+}
+  
+  .buta2{
+    margin-top: 100px;
+    margin-left: -200px;
+  }
+  
+</style>
+  
+  
+<title>FFS</title>
+<script>
+$(function(){
+  "use strict";
+  $("#next").hide();
+  $("#next2").hide();
+  $("#next3").hide();
+  $("#next4").hide();
+  $("#wa").hide();
+  $("#you").hide();
+  $("#chuu").hide();
+  $("#other").hide();
+  $("#text_area").hide();
+  $("#text_area2").hide();
+  $("#text_area3").hide();
+  $("select").hide();
+  $(".hyouka").hide();
+  $(".buta2").hide();
+  
+$("#report").on("click",function () {
+  let chart = {
+    q1:{question:"何食べた？<br>ジャンルを選んでね",wa:"t1",you:"t2",chuu:"t3",other:"t4"},
+    t1:{item:"和食"},
+    t2:{item:"洋食"},
+    t3:{item:"中華"},
+    t4:{item:"その他"},
+  };
+  
+  let state = "q1";
+  $("#info").html(chart[state].question);
+  $("#report").hide();
+  $("#wa").show();
+  $("#you").show();
+  $("#chuu").show();
+  $("#other").show();
+});
+  /*
+  let answer;
+  $("wa").on("click",function() {
+    answer = $(this).val();
+    console.log(answer);
+    if (answer == "wa") {
+      state = chart[state].wa;
+    } else if (answer == "you") {
+      state = chart[state].you;
+    } else if (answer == "chuu") {
+      state = chart[state].chuu;
+    } else if (answer == "other") {
+      state = chart[state].other;
+    } else {
+      alert("ジャンルをお選びください");
+    }
+    console.log(state);
+  });
+  */
+   $("#wa").on("click",function() {
+     $("#info").html("和食<br>何て料理？");
+     $("#wa").hide();
+     $("#you").hide();
+     $("#chuu").hide();
+     $("#other").hide();
+     $("#text_area").show();
+     $("#next").show();
+   });
+  $("#you").on("click",function() {
+     $("#info").html("洋食<br>何て料理？");
+     $("#wa").hide();
+     $("#you").hide();
+     $("#chuu").hide();
+     $("#other").hide();
+     $("#text_area").show();
+     $("#next").show();
+   });
+  $("#chuu").on("click",function() {
+     $("#info").html("中華<br>何て料理？");
+     $("#wa").hide();
+     $("#you").hide();
+     $("#chuu").hide();
+     $("#other").hide();
+     $("#text_area").show();
+     $("#next").show();
+   });
+  $("#other").on("click",function() {
+     $("#info").html("その他<br>何て料理？");
+     $("#wa").hide();
+     $("#you").hide();
+     $("#chuu").hide();
+     $("#other").hide();
+     $("#text_area").show();
+     $("#next").show();
+   });
+  
+  $("#next").on("click",function() {
+    $("#info").html("どこのお店？");
+    $("select").show();
+    $("#next").hide();
+    $("#next2").show();
+    $("#text_area").hide();
+    $("#text_area2").show();
+  });
+  
+  $("#next2").on("click",function() {
+    $("#info").html("評価しよう！<br><br>おいしさランク");
+    $(".hyouka").show();
+    $("select").hide();
+    $("#next3").show();
+    $("#next2").hide();
+    $("#text_area2").hide();
+    $("#text_area3").show();
+  });
+  
+  $("#next3").on("click",function() {
+    $("#info").html("完了！<br><br>これからもいっぱい食べようね！");
+    $("#next2").hide();
+    $(".hyouka").hide();
+    $("#text_area3").hide();
+    $(".buta2").show();
+    $("#next3").hide();
+    $("#next4").show();
+  });
+  
+  $("#next4").on("click",function() {
+    $("#info").html("フードファイターによるフードファイターのためのサポートサイトです。<br><br>ぜひ有効活用してください！");
+    $("#next").hide();
+    $("#next2").hide();
+    $("#next3").hide();
+    $("#next4").hide();
+    $("#wa").hide();
+    $("#you").hide();
+    $("#chuu").hide();
+    $("#other").hide();
+    $("select").hide();
+    $(".hyouka").hide();
+    $(".buta2").hide();
+    $("#report").show();
+  });
+});
+</script>
+</head>
+<body>
+<header>　</header>
+<main>
+  <p><img src="buta.png" id="buta" width="500"></p>
+  <p></p><p></p>
+  <p id="info" style="font-size:100%;">フードファイターによるフードファイターのためのサポートサイトです。<br><br>ぜひ有効活用してください！</p>
+
+<select name="todofuken">
+<option value="" selected>都道府県</option>
+<option value="北海道">北海道</option>
+<option value="青森県">青森県</option>
+<option value="岩手県">岩手県</option>
+<option value="宮城県">宮城県</option>
+<option value="秋田県">秋田県</option>
+<option value="山形県">山形県</option>
+<option value="福島県">福島県</option>
+<option value="茨城県">茨城県</option>
+<option value="栃木県">栃木県</option>
+<option value="群馬県">群馬県</option>
+<option value="埼玉県">埼玉県</option>
+<option value="千葉県">千葉県</option>
+<option value="東京都">東京都</option>
+<option value="神奈川県">神奈川県</option>
+<option value="新潟県">新潟県</option>
+<option value="富山県">富山県</option>
+<option value="石川県">石川県</option>
+<option value="福井県">福井県</option>
+<option value="山梨県">山梨県</option>
+<option value="長野県">長野県</option>
+<option value="岐阜県">岐阜県</option>
+<option value="静岡県">静岡県</option>
+<option value="愛知県">愛知県</option>
+<option value="三重県">三重県</option>
+<option value="滋賀県">滋賀県</option>
+<option value="京都府">京都府</option>
+<option value="大阪府">大阪府</option>
+<option value="兵庫県">兵庫県</option>
+<option value="奈良県">奈良県</option>
+<option value="和歌山県">和歌山県</option>
+<option value="鳥取県">鳥取県</option>
+<option value="島根県">島根県</option>
+<option value="岡山県">岡山県</option>
+<option value="広島県">広島県</option>
+<option value="山口県">山口県</option>
+<option value="徳島県">徳島県</option>
+<option value="香川県">香川県</option>
+<option value="愛媛県">愛媛県</option>
+<option value="高知県">高知県</option>
+<option value="福岡県">福岡県</option>
+<option value="佐賀県">佐賀県</option>
+<option value="長崎県">長崎県</option>
+<option value="熊本県">熊本県</option>
+<option value="大分県">大分県</option>
+<option value="宮崎県">宮崎県</option>
+<option value="鹿児島県">鹿児島県</option>
+<option value="沖縄県">沖縄県</option>
+</select> 
+  
+ 
+<form type="get" action="">
+  <div class="hyouka">
+    <input id="hoshi1" type="radio" name="hoshi" value="5" />
+    <label for="hoshi1">★</label>
+    <input id="hoshi2" type="radio" name="hoshi" value="4" />
+    <label for="hoshi2">★</label>
+    <input id="hoshi3" type="radio" name="hoshi" value="3" />
+    <label for="hoshi3">★</label>
+    <input id="hoshi4" type="radio" name="hoshi" value="2" />
+    <label for="hoshi4">★</label>
+    <input id="hoshi5" type="radio" name="hoshi" value="1" />
+    <label for="hoshi5">★</label>
+  </div>
+</form>
+  
+  <div class="buta2"><img src="buta2.png" name="buta2" width="400">
+  </div>
+  
+  <textarea id="text_area"></textarea>
+  <textarea id="text_area2"></textarea>
+  <textarea id="text_area3"></textarea>
+
+
+  
+  <p>
+    <button id="next">NEXT</button>
+    <button id="next2">NEXT</button>
+    <button id="next3">NEXT</button>
+    <button id="next4">NEXT</button>
+    <button id="report">REPORT</button>
+    <button id="wa">和食</button>
+    <button id="you">洋食</button>
+    <button id="chuu">中華</button>
+    <button id="other">その他</button>
+  </p>
+  <p></p><p></p>
+  <footer>　</footer>
+</main>
+</body>
+</html>

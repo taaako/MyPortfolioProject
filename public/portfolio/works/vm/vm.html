@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-size: 24px;
+}
+header {
+    background-color: indianred;
+    border-top: 1px solid #444;
+    color: #fff;
+    text-align: center;
+}
+main {
+    position:relative;
+}
+footer {
+    background-color: darkblue;
+    border-bottom:1px solid #444;
+    text-align: center;
+    color: #fff;
+}
+h1 {
+    margin: 0;
+}
+p {
+    font-size:100%;
+    text-align: center;
+    border-bottom:1px solid #fff;
+    height:100px;
+}
+div {
+    font-size:100%;
+    text-align: center;
+    border-bottom:1px solid #fff;
+    height:100px;
+}
+ul {
+    padding: 0;
+    border-top: 1px solid #000000;
+    display: table;  /* 定義 */
+    table-layout: fixed;
+    width: 100%;
+}
+li {
+    list-style-type:none;
+    border: 1px solid #666;
+    background-color: #fff;
+    display: table-cell;  /* 定義 */
+    cursor: pointer;
+}
+li:hover {
+    background: #0066CC;
+    color:#fff;
+}  
+button {
+    border-radius: 12px;
+    font-size:100%;
+    background-color: rgba(255, 63, 93, 0.41);
+    height: 50px;
+    color: #000;
+}
+img{
+  height: 100px;
+}
+</style>
+
+<title>自動販売機</title>
+<script>
+$(function(){
+  "use strict";
+  //ここから記述領域［START］
+  //以下に配列を記述してください。
+  //問題文[配列]  
+  let chart = {
+    // 状態名:{qustion:質問文, answer:結果文, yes:次の状態, no:次の状態}
+    q1:{question:"商品を選んでください",tea:"t1",coke:"t2",jasmine:"t3",milktea:"t4",water:"t5"},
+    t1:{money:"140",item:"お茶",image:"tea.png"},
+    t2:{money:"160",item:"コーラ",image:"coke.png"},
+    t3:{money:"150",item:"ジャスミン茶",image:"jasmine.png"},
+    t4:{money:"200",item:"ミルクティ",image:"milktea.png"},
+    t5:{money:"100",item:"水",image:"evian.png"}
+  };
+  
+
+  let state = "q1";
+  let answer;
+  let pay=0;
+  //1.最初の問題文＆回答選択肢＆回答値を設定
+  $("#quest").html(chart[state].question);
+  $("#next2").hide();
+  $("#next3").hide();
+//  $("#coin10").hide();
+//  $("#coin50").hide();
+//  $("#coin100").hide();
+//  $("#coin500").hide();
+  $("#coins").hide();
+  $("#info").hide();
+  $("#pay").hide();
+  $("#reset").hide();
+  //2.ラジオボタンをクリックしたらイベント発生！(クリックイベント)
+  $("input").on("click",function() {
+    answer = $(this).val();
+    console.log(answer);
+  });
+
+  // 次へボタンを押されたときの処理を書こう
+  $("#next").on("click",function () {
+    if (answer == "tea") {
+      // yesの場合の次の状態を代入
+      state = chart[state].tea;
+    } else if (answer == "coke") {
+      // noの場合の次の状態を代入
+      state = chart[state].coke;
+    } else if (answer == "jasmine") {
+      // noの場合の次の状態を代入
+      state = chart[state].jasmine;
+    } else if (answer == "milktea") {
+      // noの場合の次の状態を代入
+      state = chart[state].milktea;
+    } else if (answer == "water") {
+      // noの場合の次の状態を代入
+      state = chart[state].water;
+    } else {
+      alert("商品をお選びください");
+    }
+    console.log(state);
+    
+    // 次の状態が質問なら、その質問を表示する
+    if (chart[state].question) {
+      $("#quest").html(chart[state].question);
+      
+    // 次の状態がタイプなら、そのタイプを表示する
+    // 質問領域に「お疲れ様でした」と表示する
+    } else if (chart[state].money) {
+      $("#next").hide();
+      $("#next2").show();
+      $("#coins").show();
+      $("#inputs").hide();
+      $("#info").show();
+      $("#pay").show();
+      pay=0;
+      $("#pay").html("￥"+pay);
+     // $("#info1").html(chart[state].item);
+      $("#info").html(chart[state].item+"<br>￥"+chart[state].money);
+      $("#reset").show();
+      
+      $("#answer").html(chart[state].answer).show(2000);
+      $("#quest").html("コインを投入してください");
+    }
+    $("input").prop("checked",false);    
+  });
+  
+  $("#coin10").on("click",function() {
+    pay += Number($(this).val());
+    $("#pay").html("￥"+pay);
+    console.log(pay);
+  });
+  $("#coin50").on("click",function() {
+    pay += Number($(this).val());
+    $("#pay").html("￥"+pay);
+    console.log(pay);
+  });
+  $("#coin100").on("click",function() {
+    pay += Number($(this).val());
+    $("#pay").html("￥"+pay);
+    console.log(pay);
+  });
+  $("#coin500").on("click",function() {
+    pay += Number($(this).val());
+    $("#pay").html("￥"+pay);
+    console.log(pay);
+  });
+  
+  $("#next2").on("click",function() {
+    let change;
+    change=pay-Number(chart[state].money);
+    if (change<0){
+      alert("金額が不足しています");
+    }else{
+      $("#quest").html("お買い上げありがとうございます");
+      $("#coins").hide();
+      $("#info").html("<img src="+chart[state].image+">");
+      $("#next3").show();
+      $("#next2").hide();
+      $("#reset").hide();
+      $("#pay").html("お釣り<br>￥"+change);
+    }
+    console.log(change);
+  });
+  
+  $("#next3").on("click",function() {
+    state="q1";
+    $("#quest").html(chart[state].question);
+    $("#next").show();
+    $("#inputs").show();
+    $("#pay").hide();
+    $("#next3").hide();
+    $("#info").hide();
+    answer="";
+    console.log(answer);
+  });
+  
+  $("#reset").on("click",function() {
+    pay=0;
+    $("#pay").html("￥"+pay);
+  });
+  
+  //ここまでが記述領域［END］
+});
+</script>
+</head>
+<body>
+<header>
+  <h1>自動販売機</h1>
+</header>
+<main>
+  <p id="quest"></p>
+  <div id="info"></div>
+    <div id="inputs">
+      <input type="radio" name="toi" value="tea"><span id="toi1">お茶</span>
+      <input type="radio" name="toi" value="coke"><span id="toi2">コーラ</span>
+      <input type="radio" name="toi" value="jasmine"><span id="toi3">ジャスミン茶</span>
+      <input type="radio" name="toi" value="milktea"><span id="toi4">ミルクティ</span>
+      <input type="radio" name="toi" value="water"><span id="toi5">水</span>
+    </div>
+    <div id="coins">
+      <button id="coin10" name="coin" value="10">10</button>
+      <button id="coin50" name="coin" value="50">50</button>
+      <button id="coin100" name="coin" value="100">100</button>
+      <button id="coin500" name="coin" value="500">500</button>
+    </div>
+  <div id="pay"></div>
+  <p>
+    <button id="next">お支払いへ</button>
+    <button id="next2">確定</button>
+    <button id="next3">お買い物を続ける</button>
+    <button id="reset">返却</button>
+
+  </p>
+</main>
+</body>
+</html>
