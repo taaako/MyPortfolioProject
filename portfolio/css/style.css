@@ -2,9 +2,9 @@
 /* CSS Document */
 
 body {
-    font-size:0.85em;
+    font-size:1.0em;
     color: #555;
-    margin: 0em 2em;
+    margin: 0em 1.5em;
     background-color: lightgray;
     font-family: 'M PLUS Rounded 1c', sans-serif;
 }
@@ -14,7 +14,7 @@ header {
     width: 100%;
     top: 0;
     z-index: 10000;
-  }
+}
 #top {
     position: fixed;
     bottom: 20px;
@@ -33,7 +33,7 @@ nav ul {
     background-color: rgba(256, 256, 256, 0.5);
     display: flex;
 }
-nav li, nav a { 
+nav li, nav a {
     display: block;
 }
 nav a{
@@ -72,6 +72,10 @@ dt{
 }
 dd{
     margin: 0 40px;
+}
+#owu_hackathon {
+    color: #86c3e9;
+    text-decoration: none;
 }
 #div3 {
     background: white;
@@ -115,7 +119,7 @@ textarea{
 .button:hover {
     background: #86c3e9;
     color: white;
-  }
+}
 #foot{
     text-align: center;
     margin: 30px;

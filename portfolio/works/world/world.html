@@ -65,8 +65,6 @@ a {
     ichigooden = x;
     loader.load('images/futa.png', function (y) {
     futa = y;
-    loader.load('images/kuma.jpg', function (z) {
-    kuma = z;
     loader.load('images/wall.jpg', function (x1) {
     wall = x1;
     loader.load('images/kira.png', function (y1) {
@@ -75,21 +73,19 @@ a {
     kusa = z1;
     loader.load('images/door.png', function (x2) {
     door = x2;
-    loader.load('images/kabe.jpg', function (y2) {
-    kabe = y2;
     loader.load('images/uzu.png', function (z2) {
     uzu = z2;
     loader.load('images/obake.png', function (x3) {
     obake = x3;
     init();
     animate();
-  });});});});});});});});});});
+  });});});});});});});});
   
  
   function init() {
  
     // (1) シーンの作成 （変更しない）
-    scene = new THREE.Scene();        
+    scene = new THREE.Scene();
  
     // (2) カメラの作成 （変更しない）
     camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 10000);
@@ -120,124 +116,7 @@ a {
     // (5)表示する物体の作成
     var geometry, material; 
  
- /*
-   // クマ（顔）
-    geometry = new THREE.SphereGeometry(100, 32, 32);
-    material = new THREE.MeshPhongMaterial({
-      map: kuma
-    });
 
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.x = 0;
-    mesh.position.y = 95;
-    mesh.position.z = 0;
-    mesh.castShadow = true;
-    mesh.rotation.y = -Math.PI/2;
-    scene.add(mesh);
-
-    // クマ（耳）
-    geometry = new THREE.SphereGeometry(40, 32, 32);
-    material = new THREE.MeshPhongMaterial({
-      color: 0xA67C52
-    });
-    for(let i=0; i<260; i=i+130){
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.x = 60-i;
-    mesh.position.y = 165;
-    mesh.position.z = 0;
-    mesh.castShadow = true;
-    mesh.rotation.y = -Math.PI/2;
-    scene.add(mesh);
-    }
-
-    // クマ（体）
-    geometry = new THREE.SphereGeometry(100,32,32);  //楕円にして体のバランスをとって全体を作れたら、大量生産して埋もれさせるつもりだった
-    material = new THREE.MeshPhongMaterial({
-      color: 0xA67C52
-    });
-
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.x = 0;
-    mesh.position.y = -100;
-    mesh.position.z = 0;
-    mesh.castShadow = true;
-    mesh.rotation.y = -Math.PI/2;
-    scene.add(mesh);
-
-
-
-   // 壁（後ろ）
-    geometry = new THREE.BoxGeometry(1000, 500, 5);
-    material = new THREE.MeshPhongMaterial({
-      map: wall
-    });
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.x = 0;
-    mesh.position.y = 250;
-    mesh.position.z = -500;
-    mesh.receiveShadow = true;
-    mesh.castShadow = true;
-    scene.add(mesh);
-
-
-    //壁（右）
-    geometry = new THREE.BoxGeometry(5, 500, 1000);
-    material = new THREE.MeshLambertMaterial({
-      map: wall
-      //specular: 0xcccccc,
-      //emissive: 0xff00ff,
-      //map: texture
-    });
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.x = 500;
-    mesh.position.y = 250;
-    mesh.position.z = 0;
-    mesh.receiveShadow = true;
-    mesh.castShadow = true;
-    scene.add(mesh);
-
-
-    //壁(左）
-    geometry = new THREE.BoxGeometry(5, 500, 1000);
-    material = new THREE.MeshLambertMaterial({
-      map: wall
-    });
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.x = -500;
-    mesh.position.y = 250;
-    mesh.position.z = 0;
-    mesh.receiveShadow = true;
-    mesh.castShadow = true;
-    scene.add(mesh);
-
-
-    // 壁（手前）
-    geometry = new THREE.BoxGeometry(1000, 500, 0.1);
-    material = new THREE.MeshLambertMaterial({
-      map: wall
-    });
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.x = 0;
-    mesh.position.y = 250;
-    mesh.position.z = 500;
-    mesh.receiveShadow = true;
-    mesh.castShadow = true;
-    scene.add(mesh);
-
-
-    //暖炉
-    geometry = new THREE.BoxGeometry(200, 200, 400);
-    material = new THREE.MeshLambertMaterial({
-      map: wall
-    });
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.x = -400;
-    mesh.position.y = 100;
-    mesh.position.z = 0;
-    mesh.receiveShadow = true;
-    mesh.castShadow = true;
-    scene.add(mesh);
-*/
 
 
    //start
